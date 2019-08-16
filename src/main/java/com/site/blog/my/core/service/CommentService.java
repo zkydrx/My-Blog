@@ -4,7 +4,8 @@ import com.site.blog.my.core.entity.BlogComment;
 import com.site.blog.my.core.util.PageQueryUtil;
 import com.site.blog.my.core.util.PageResult;
 
-public interface CommentService {
+public interface CommentService
+{
     /**
      * 添加评论
      *

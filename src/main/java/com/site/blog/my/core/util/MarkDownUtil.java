@@ -9,15 +9,18 @@ import org.springframework.util.StringUtils;
 
 import java.util.Arrays;
 
-public class MarkDownUtil {
+public class MarkDownUtil
+{
     /**
      * 转换md格式为html
      *
      * @param markdownString
      * @return
      */
-    public static String mdToHtml(String markdownString) {
-        if (StringUtils.isEmpty(markdownString)) {
+    public static String mdToHtml(String markdownString)
+    {
+        if (StringUtils.isEmpty(markdownString))
+        {
             return "";
         }
         java.util.List<Extension> extensions = Arrays.asList(TablesExtension.create());

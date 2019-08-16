@@ -6,7 +6,8 @@ import com.site.blog.my.core.util.PageResult;
 
 import java.util.List;
 
-public interface CategoryService {
+public interface CategoryService
+{
 
     /**
      * 查询分类的分页数据
@@ -25,7 +26,7 @@ public interface CategoryService {
      * @param categoryIcon
      * @return
      */
-    Boolean saveCategory(String categoryName,String categoryIcon);
+    Boolean saveCategory(String categoryName, String categoryIcon);
 
     Boolean updateCategory(Integer categoryId, String categoryName, String categoryIcon);
 

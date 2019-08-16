@@ -8,7 +8,8 @@ import com.site.blog.my.core.util.PageResult;
 
 import java.util.List;
 
-public interface BlogService {
+public interface BlogService
+{
     String saveBlog(Blog blog);
 
     PageResult getBlogsPage(PageQueryUtil pageUtil);
@@ -49,6 +50,7 @@ public interface BlogService {
      * @return
      */
     List<SimpleBlogListVO> getBlogListForIndexPage(int type);
+
     /**
      * 文章详情
      *

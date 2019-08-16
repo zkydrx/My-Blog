@@ -13,7 +13,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class ConfigServiceImpl implements ConfigService {
+public class ConfigServiceImpl implements ConfigService
+{
     @Autowired
     private BlogConfigMapper configMapper;
 
@@ -33,9 +34,11 @@ public class ConfigServiceImpl implements ConfigService {
     public static final String footerPoweredByURL = "##";
 
     @Override
-    public int updateConfig(String configName, String configValue) {
+    public int updateConfig(String configName, String configValue)
+    {
         BlogConfig blogConfig = configMapper.selectByPrimaryKey(configName);
-        if (blogConfig != null) {
+        if (blogConfig != null)
+        {
             blogConfig.setConfigValue(configValue);
             blogConfig.setUpdateTime(new Date());
             return configMapper.updateByPrimaryKeySelective(blogConfig);
@@ -44,45 +47,59 @@ public class ConfigServiceImpl implements ConfigService {
     }
 
     @Override
-    public Map<String, String> getAllConfigs() {
+    public Map<String, String> getAllConfigs()
+    {
         //获取所有的map并封装为map
         List<BlogConfig> blogConfigs = configMapper.selectAll();
         Map<String, String> configMap = blogConfigs.stream().collect(Collectors.toMap(BlogConfig::getConfigName, BlogConfig::getConfigValue));
-        for (Map.Entry<String, String> config : configMap.entrySet()) {
-            if ("websiteName".equals(config.getKey()) && StringUtils.isEmpty(config.getValue())) {
+        for (Map.Entry<String, String> config : configMap.entrySet())
+        {
+            if ("websiteName".equals(config.getKey()) && StringUtils.isEmpty(config.getValue()))
+            {
                 config.setValue(websiteName);
             }
-            if ("websiteDescription".equals(config.getKey()) && StringUtils.isEmpty(config.getValue())) {
+            if ("websiteDescription".equals(config.getKey()) && StringUtils.isEmpty(config.getValue()))
+            {
                 config.setValue(websiteDescription);
             }
-            if ("websiteLogo".equals(config.getKey()) && StringUtils.isEmpty(config.getValue())) {
+            if ("websiteLogo".equals(config.getKey()) && StringUtils.isEmpty(config.getValue()))
+            {
                 config.setValue(websiteLogo);
             }
-            if ("websiteIcon".equals(config.getKey()) && StringUtils.isEmpty(config.getValue())) {
+            if ("websiteIcon".equals(config.getKey()) && StringUtils.isEmpty(config.getValue()))
+            {
                 config.setValue(websiteIcon);
             }
-            if ("yourAvatar".equals(config.getKey()) && StringUtils.isEmpty(config.getValue())) {
+            if ("yourAvatar".equals(config.getKey()) && StringUtils.isEmpty(config.getValue()))
+            {
                 config.setValue(yourAvatar);
             }
-            if ("yourEmail".equals(config.getKey()) && StringUtils.isEmpty(config.getValue())) {
+            if ("yourEmail".equals(config.getKey()) && StringUtils.isEmpty(config.getValue()))
+            {
                 config.setValue(yourEmail);
             }
-            if ("yourName".equals(config.getKey()) && StringUtils.isEmpty(config.getValue())) {
+            if ("yourName".equals(config.getKey()) && StringUtils.isEmpty(config.getValue()))
+            {
                 config.setValue(yourName);
             }
-            if ("footerAbout".equals(config.getKey()) && StringUtils.isEmpty(config.getValue())) {
+            if ("footerAbout".equals(config.getKey()) && StringUtils.isEmpty(config.getValue()))
+            {
                 config.setValue(footerAbout);
             }
-            if ("footerICP".equals(config.getKey()) && StringUtils.isEmpty(config.getValue())) {
+            if ("footerICP".equals(config.getKey()) && StringUtils.isEmpty(config.getValue()))
+            {
                 config.setValue(footerICP);
             }
-            if ("footerCopyRight".equals(config.getKey()) && StringUtils.isEmpty(config.getValue())) {
+            if ("footerCopyRight".equals(config.getKey()) && StringUtils.isEmpty(config.getValue()))
+            {
                 config.setValue(footerCopyRight);
             }
-            if ("footerPoweredBy".equals(config.getKey()) && StringUtils.isEmpty(config.getValue())) {
+            if ("footerPoweredBy".equals(config.getKey()) && StringUtils.isEmpty(config.getValue()))
+            {
                 config.setValue(footerPoweredBy);
             }
-            if ("footerPoweredByURL".equals(config.getKey()) && StringUtils.isEmpty(config.getValue())) {
+            if ("footerPoweredByURL".equals(config.getKey()) && StringUtils.isEmpty(config.getValue()))
+            {
                 config.setValue(footerPoweredByURL);
             }
         }

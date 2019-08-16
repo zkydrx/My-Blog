@@ -55,9 +55,9 @@
     </select>
 
     <update id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    update tb_blog_tag set is_deleted = 1
-    where tag_id = #{tagId,jdbcType=INTEGER}
-  </update>
+        update tb_blog_tag set is_deleted = 1
+        where tag_id = #{tagId,jdbcType=INTEGER}
+    </update>
 
     <update id="deleteBatch">
         update tb_blog_tag
@@ -77,11 +77,11 @@
     </insert>
 
     <insert id="insert" parameterType="com.site.blog.my.core.entity.BlogTag">
-    insert into tb_blog_tag (tag_id, tag_name, is_deleted, 
-      create_time)
-    values (#{tagId,jdbcType=INTEGER}, #{tagName,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT}, 
-      #{createTime,jdbcType=TIMESTAMP})
-  </insert>
+        insert into tb_blog_tag (tag_id, tag_name, is_deleted,
+        create_time)
+        values (#{tagId,jdbcType=INTEGER}, #{tagName,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT},
+        #{createTime,jdbcType=TIMESTAMP})
+    </insert>
     <insert id="insertSelective" parameterType="com.site.blog.my.core.entity.BlogTag">
         insert into tb_blog_tag
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -129,10 +129,10 @@
         where tag_id = #{tagId,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.site.blog.my.core.entity.BlogTag">
-    update tb_blog_tag
-    set tag_name = #{tagName,jdbcType=VARCHAR},
-      is_deleted = #{isDeleted,jdbcType=TINYINT},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
-    where tag_id = #{tagId,jdbcType=INTEGER}
-  </update>
+        update tb_blog_tag
+        set tag_name = #{tagName,jdbcType=VARCHAR},
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+        create_time = #{createTime,jdbcType=TIMESTAMP}
+        where tag_id = #{tagId,jdbcType=INTEGER}
+    </update>
 </mapper>

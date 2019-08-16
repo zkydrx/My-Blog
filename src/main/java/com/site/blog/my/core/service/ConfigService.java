@@ -2,7 +2,8 @@ package com.site.blog.my.core.service;
 
 import java.util.Map;
 
-public interface ConfigService {
+public interface ConfigService
+{
     /**
      * 修改配置项
      *
@@ -17,5 +18,5 @@ public interface ConfigService {
      *
      * @return
      */
-    Map<String,String> getAllConfigs();
+    Map<String, String> getAllConfigs();
 }

@@ -27,14 +27,15 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * @author 13
- * @qq交流群 796794009
- * @email 2449207463@qq.com
- * @link http://13blog.site
+ *
+
+ *
+ *
  */
 @Controller
 @RequestMapping("/admin")
-public class BlogController {
+public class BlogController
+{
 
     @Resource
     private BlogService blogService;
@@ -43,8 +44,10 @@ public class BlogController {
 
     @GetMapping("/blogs/list")
     @ResponseBody
-    public Result list(@RequestParam Map<String, Object> params) {
-        if (StringUtils.isEmpty(params.get("page")) || StringUtils.isEmpty(params.get("limit"))) {
+    public Result list(@RequestParam Map<String, Object> params)
+    {
+        if (StringUtils.isEmpty(params.get("page")) || StringUtils.isEmpty(params.get("limit")))
+        {
             return ResultGenerator.genFailResult("参数异常！");
         }
         PageQueryUtil pageUtil = new PageQueryUtil(params);
@@ -53,23 +56,27 @@ public class BlogController {
 
 
     @GetMapping("/blogs")
-    public String list(HttpServletRequest request) {
+    public String list(HttpServletRequest request)
+    {
         request.setAttribute("path", "blogs");
         return "admin/blog";
     }
 
     @GetMapping("/blogs/edit")
-    public String edit(HttpServletRequest request) {
+    public String edit(HttpServletRequest request)
+    {
         request.setAttribute("path", "edit");
         request.setAttribute("categories", categoryService.getAllCategories());
         return "admin/edit";
     }
 
     @GetMapping("/blogs/edit/{blogId}")
-    public String edit(HttpServletRequest request, @PathVariable("blogId") Long blogId) {
+    public String edit(HttpServletRequest request, @PathVariable("blogId") Long blogId)
+    {
         request.setAttribute("path", "edit");
         Blog blog = blogService.getBlogById(blogId);
-        if (blog == null) {
+        if (blog == null)
+        {
             return "error/error_400";
         }
         request.setAttribute("blog", blog);
@@ -86,29 +93,38 @@ public class BlogController {
                        @RequestParam("blogContent") String blogContent,
                        @RequestParam("blogCoverImage") String blogCoverImage,
                        @RequestParam("blogStatus") Byte blogStatus,
-                       @RequestParam("enableComment") Byte enableComment) {
-        if (StringUtils.isEmpty(blogTitle)) {
+                       @RequestParam("enableComment") Byte enableComment)
+    {
+        if (StringUtils.isEmpty(blogTitle))
+        {
             return ResultGenerator.genFailResult("请输入文章标题");
         }
-        if (blogTitle.trim().length() > 150) {
+        if (blogTitle.trim().length() > 150)
+        {
             return ResultGenerator.genFailResult("标题过长");
         }
-        if (StringUtils.isEmpty(blogTags)) {
+        if (StringUtils.isEmpty(blogTags))
+        {
             return ResultGenerator.genFailResult("请输入文章标签");
         }
-        if (blogTags.trim().length() > 150) {
+        if (blogTags.trim().length() > 150)
+        {
             return ResultGenerator.genFailResult("标签过长");
         }
-        if (blogSubUrl.trim().length() > 150) {
+        if (blogSubUrl.trim().length() > 150)
+        {
             return ResultGenerator.genFailResult("路径过长");
         }
-        if (StringUtils.isEmpty(blogContent)) {
+        if (StringUtils.isEmpty(blogContent))
+        {
             return ResultGenerator.genFailResult("请输入文章内容");
         }
-        if (blogTags.trim().length() > 100000) {
+        if (blogTags.trim().length() > 100000)
+        {
             return ResultGenerator.genFailResult("文章内容过长");
         }
-        if (StringUtils.isEmpty(blogCoverImage)) {
+        if (StringUtils.isEmpty(blogCoverImage))
+        {
             return ResultGenerator.genFailResult("封面图不能为空");
         }
         Blog blog = new Blog();
@@ -121,9 +137,12 @@ public class BlogController {
         blog.setBlogStatus(blogStatus);
         blog.setEnableComment(enableComment);
         String saveBlogResult = blogService.saveBlog(blog);
-        if ("success".equals(saveBlogResult)) {
+        if ("success".equals(saveBlogResult))
+        {
             return ResultGenerator.genSuccessResult("添加成功");
-        } else {
+        }
+        else
+        {
             return ResultGenerator.genFailResult(saveBlogResult);
         }
     }
@@ -138,29 +157,38 @@ public class BlogController {
                          @RequestParam("blogContent") String blogContent,
                          @RequestParam("blogCoverImage") String blogCoverImage,
                          @RequestParam("blogStatus") Byte blogStatus,
-                         @RequestParam("enableComment") Byte enableComment) {
-        if (StringUtils.isEmpty(blogTitle)) {
+                         @RequestParam("enableComment") Byte enableComment)
+    {
+        if (StringUtils.isEmpty(blogTitle))
+        {
             return ResultGenerator.genFailResult("请输入文章标题");
         }
-        if (blogTitle.trim().length() > 150) {
+        if (blogTitle.trim().length() > 150)
+        {
             return ResultGenerator.genFailResult("标题过长");
         }
-        if (StringUtils.isEmpty(blogTags)) {
+        if (StringUtils.isEmpty(blogTags))
+        {
             return ResultGenerator.genFailResult("请输入文章标签");
         }
-        if (blogTags.trim().length() > 150) {
+        if (blogTags.trim().length() > 150)
+        {
             return ResultGenerator.genFailResult("标签过长");
         }
-        if (blogSubUrl.trim().length() > 150) {
+        if (blogSubUrl.trim().length() > 150)
+        {
             return ResultGenerator.genFailResult("路径过长");
         }
-        if (StringUtils.isEmpty(blogContent)) {
+        if (StringUtils.isEmpty(blogContent))
+        {
             return ResultGenerator.genFailResult("请输入文章内容");
         }
-        if (blogTags.trim().length() > 100000) {
+        if (blogTags.trim().length() > 100000)
+        {
             return ResultGenerator.genFailResult("文章内容过长");
         }
-        if (StringUtils.isEmpty(blogCoverImage)) {
+        if (StringUtils.isEmpty(blogCoverImage))
+        {
             return ResultGenerator.genFailResult("封面图不能为空");
         }
         Blog blog = new Blog();
@@ -174,9 +202,12 @@ public class BlogController {
         blog.setBlogStatus(blogStatus);
         blog.setEnableComment(enableComment);
         String updateBlogResult = blogService.updateBlog(blog);
-        if ("success".equals(updateBlogResult)) {
+        if ("success".equals(updateBlogResult))
+        {
             return ResultGenerator.genSuccessResult("修改成功");
-        } else {
+        }
+        else
+        {
             return ResultGenerator.genFailResult(updateBlogResult);
         }
     }
@@ -184,8 +215,8 @@ public class BlogController {
     @PostMapping("/blogs/md/uploadfile")
     public void uploadFileByEditormd(HttpServletRequest request,
                                      HttpServletResponse response,
-                                     @RequestParam(name = "editormd-image-file", required = true)
-                                             MultipartFile file) throws IOException, URISyntaxException {
+                                     @RequestParam(name = "editormd-image-file", required = true) MultipartFile file) throws IOException, URISyntaxException
+    {
         String fileName = file.getOriginalFilename();
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
         //生成文件名称通用方法
@@ -198,9 +229,12 @@ public class BlogController {
         File destFile = new File(Constants.FILE_UPLOAD_DIC + newFileName);
         String fileUrl = MyBlogUtils.getHost(new URI(request.getRequestURL() + "")) + "/upload/" + newFileName;
         File fileDirectory = new File(Constants.FILE_UPLOAD_DIC);
-        try {
-            if (!fileDirectory.exists()) {
-                if (!fileDirectory.mkdir()) {
+        try
+        {
+            if (!fileDirectory.exists())
+            {
+                if (!fileDirectory.mkdir())
+                {
                     throw new IOException("文件夹创建失败,路径为：" + fileDirectory);
                 }
             }
@@ -208,22 +242,31 @@ public class BlogController {
             request.setCharacterEncoding("utf-8");
             response.setHeader("Content-Type", "text/html");
             response.getWriter().write("{\"success\": 1, \"message\":\"success\",\"url\":\"" + fileUrl + "\"}");
-        } catch (UnsupportedEncodingException e) {
+        }
+        catch (UnsupportedEncodingException e)
+        {
             response.getWriter().write("{\"success\":0}");
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             response.getWriter().write("{\"success\":0}");
         }
     }
 
     @PostMapping("/blogs/delete")
     @ResponseBody
-    public Result delete(@RequestBody Integer[] ids) {
-        if (ids.length < 1) {
+    public Result delete(@RequestBody Integer[] ids)
+    {
+        if (ids.length < 1)
+        {
             return ResultGenerator.genFailResult("参数异常！");
         }
-        if (blogService.deleteBatch(ids)) {
+        if (blogService.deleteBatch(ids))
+        {
             return ResultGenerator.genSuccessResult();
-        } else {
+        }
+        else
+        {
             return ResultGenerator.genFailResult("删除失败");
         }
     }

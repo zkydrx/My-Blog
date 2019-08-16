@@ -5,22 +5,29 @@ import org.springframework.util.StringUtils;
 import java.net.URI;
 
 /**
- * @author 13
+ *
  */
-public class MyBlogUtils {
+public class MyBlogUtils
+{
 
-    public static URI getHost(URI uri) {
+    public static URI getHost(URI uri)
+    {
         URI effectiveURI = null;
-        try {
+        try
+        {
             effectiveURI = new URI(uri.getScheme(), uri.getUserInfo(), uri.getHost(), uri.getPort(), null, null, null);
-        } catch (Throwable var4) {
+        }
+        catch (Throwable var4)
+        {
             effectiveURI = null;
         }
         return effectiveURI;
     }
 
-    public static String cleanString(String value) {
-        if (StringUtils.isEmpty(value)) {
+    public static String cleanString(String value)
+    {
+        if (StringUtils.isEmpty(value))
+        {
             return "";
         }
         value = value.toLowerCase();

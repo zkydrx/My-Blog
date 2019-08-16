@@ -23,18 +23,20 @@ import java.util.Random;
 import java.util.UUID;
 
 /**
- * @author 13
- * @qq交流群 796794009
- * @email 2449207463@qq.com
- * @link http://13blog.site
+ *
+
+ *
+ *
  */
 @Controller
 @RequestMapping("/admin")
-public class UploadController {
+public class UploadController
+{
 
     @PostMapping({"/upload/file"})
     @ResponseBody
-    public Result upload(HttpServletRequest httpServletRequest, @RequestParam("file") MultipartFile file) throws URISyntaxException {
+    public Result upload(HttpServletRequest httpServletRequest, @RequestParam("file") MultipartFile file) throws URISyntaxException
+    {
         String fileName = file.getOriginalFilename();
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
         //生成文件名称通用方法
@@ -46,9 +48,12 @@ public class UploadController {
         File fileDirectory = new File(Constants.FILE_UPLOAD_DIC);
         //创建文件
         File destFile = new File(Constants.FILE_UPLOAD_DIC + newFileName);
-        try {
-            if (!fileDirectory.exists()) {
-                if (!fileDirectory.mkdir()) {
+        try
+        {
+            if (!fileDirectory.exists())
+            {
+                if (!fileDirectory.mkdir())
+                {
                     throw new IOException("文件夹创建失败,路径为：" + fileDirectory);
                 }
             }
@@ -56,7 +61,9 @@ public class UploadController {
             Result resultSuccess = ResultGenerator.genSuccessResult();
             resultSuccess.setData(MyBlogUtils.getHost(new URI(httpServletRequest.getRequestURL() + "")) + "/upload/" + newFileName);
             return resultSuccess;
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
             return ResultGenerator.genFailResult("文件上传失败");
         }

@@ -13,7 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class CategoryServiceImpl implements CategoryService {
+public class CategoryServiceImpl implements CategoryService
+{
 
     @Autowired
     private BlogCategoryMapper blogCategoryMapper;
@@ -21,7 +22,8 @@ public class CategoryServiceImpl implements CategoryService {
     private BlogMapper blogMapper;
 
     @Override
-    public PageResult getBlogCategoryPage(PageQueryUtil pageUtil) {
+    public PageResult getBlogCategoryPage(PageQueryUtil pageUtil)
+    {
         List<BlogCategory> categoryList = blogCategoryMapper.findCategoryList(pageUtil);
         int total = blogCategoryMapper.getTotalCategories(pageUtil);
         PageResult pageResult = new PageResult(categoryList, total, pageUtil.getLimit(), pageUtil.getPage());
@@ -29,14 +31,17 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public int getTotalCategories() {
+    public int getTotalCategories()
+    {
         return blogCategoryMapper.getTotalCategories(null);
     }
 
     @Override
-    public Boolean saveCategory(String categoryName, String categoryIcon) {
+    public Boolean saveCategory(String categoryName, String categoryIcon)
+    {
         BlogCategory temp = blogCategoryMapper.selectByCategoryName(categoryName);
-        if (temp == null) {
+        if (temp == null)
+        {
             BlogCategory blogCategory = new BlogCategory();
             blogCategory.setCategoryName(categoryName);
             blogCategory.setCategoryIcon(categoryIcon);
@@ -47,9 +52,11 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     @Transactional
-    public Boolean updateCategory(Integer categoryId, String categoryName, String categoryIcon) {
+    public Boolean updateCategory(Integer categoryId, String categoryName, String categoryIcon)
+    {
         BlogCategory blogCategory = blogCategoryMapper.selectByPrimaryKey(categoryId);
-        if (blogCategory != null) {
+        if (blogCategory != null)
+        {
             blogCategory.setCategoryIcon(categoryIcon);
             blogCategory.setCategoryName(categoryName);
             //修改分类实体
@@ -61,8 +68,10 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     @Transactional
-    public Boolean deleteBatch(Integer[] ids) {
-        if (ids.length < 1) {
+    public Boolean deleteBatch(Integer[] ids)
+    {
+        if (ids.length < 1)
+        {
             return false;
         }
         //修改tb_blog表
@@ -72,7 +81,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<BlogCategory> getAllCategories() {
+    public List<BlogCategory> getAllCategories()
+    {
         return blogCategoryMapper.findCategoryList(null);
     }
 

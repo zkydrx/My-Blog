@@ -3,7 +3,8 @@ package com.site.blog.my.core.controller.vo;
 import java.util.Date;
 import java.util.List;
 
-public class BlogDetailVO {
+public class BlogDetailVO
+{
     private Long blogId;
 
     private String blogTitle;
@@ -28,99 +29,123 @@ public class BlogDetailVO {
 
     private Date createTime;
 
-    public Long getBlogId() {
+    public Long getBlogId()
+    {
         return blogId;
     }
 
-    public void setBlogId(Long blogId) {
+    public void setBlogId(Long blogId)
+    {
         this.blogId = blogId;
     }
 
-    public String getBlogTitle() {
+    public String getBlogTitle()
+    {
         return blogTitle;
     }
 
-    public void setBlogTitle(String blogTitle) {
+    public void setBlogTitle(String blogTitle)
+    {
         this.blogTitle = blogTitle;
     }
 
-    public Integer getBlogCategoryId() {
+    public Integer getBlogCategoryId()
+    {
         return blogCategoryId;
     }
 
-    public void setBlogCategoryId(Integer blogCategoryId) {
+    public void setBlogCategoryId(Integer blogCategoryId)
+    {
         this.blogCategoryId = blogCategoryId;
     }
 
-    public String getBlogCategoryIcon() {
+    public String getBlogCategoryIcon()
+    {
         return blogCategoryIcon;
     }
 
-    public void setBlogCategoryIcon(String blogCategoryIcon) {
+    public void setBlogCategoryIcon(String blogCategoryIcon)
+    {
         this.blogCategoryIcon = blogCategoryIcon;
     }
 
-    public String getBlogCategoryName() {
+    public String getBlogCategoryName()
+    {
         return blogCategoryName;
     }
 
-    public void setBlogCategoryName(String blogCategoryName) {
+    public void setBlogCategoryName(String blogCategoryName)
+    {
         this.blogCategoryName = blogCategoryName;
     }
 
-    public Long getBlogViews() {
+    public Long getBlogViews()
+    {
         return blogViews;
     }
 
-    public void setBlogViews(Long blogViews) {
+    public void setBlogViews(Long blogViews)
+    {
         this.blogViews = blogViews;
     }
 
-    public List<String> getBlogTags() {
+    public List<String> getBlogTags()
+    {
         return blogTags;
     }
 
-    public void setBlogTags(List<String> blogTags) {
+    public void setBlogTags(List<String> blogTags)
+    {
         this.blogTags = blogTags;
     }
 
-    public String getBlogContent() {
+    public String getBlogContent()
+    {
         return blogContent;
     }
 
-    public void setBlogContent(String blogContent) {
+    public void setBlogContent(String blogContent)
+    {
         this.blogContent = blogContent;
     }
 
-    public Integer getCommentCount() {
+    public Integer getCommentCount()
+    {
         return commentCount;
     }
 
-    public void setCommentCount(Integer commentCount) {
+    public void setCommentCount(Integer commentCount)
+    {
         this.commentCount = commentCount;
     }
 
-    public Byte getEnableComment() {
+    public Byte getEnableComment()
+    {
         return enableComment;
     }
 
-    public void setEnableComment(Byte enableComment) {
+    public void setEnableComment(Byte enableComment)
+    {
         this.enableComment = enableComment;
     }
 
-    public Date getCreateTime() {
+    public Date getCreateTime()
+    {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(Date createTime)
+    {
         this.createTime = createTime;
     }
 
-    public String getBlogCoverImage() {
+    public String getBlogCoverImage()
+    {
         return blogCoverImage;
     }
 
-    public void setBlogCoverImage(String blogCoverImage) {
+    public void setBlogCoverImage(String blogCoverImage)
+    {
         this.blogCoverImage = blogCoverImage;
     }
 }

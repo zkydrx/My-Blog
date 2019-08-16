@@ -13,28 +13,33 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 
 /**
- * @author 13
- * @qq交流群 796794009
- * @email 2449207463@qq.com
- * @link http://13blog.site
+ *
+
+ *
+ *
  */
 @Controller
-public class CommonController {
+public class CommonController
+{
 
     @Autowired
     private DefaultKaptcha captchaProducer;
 
     @GetMapping("/common/kaptcha")
-    public void defaultKaptcha(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
+    public void defaultKaptcha(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception
+    {
         byte[] captchaOutputStream = null;
         ByteArrayOutputStream imgOutputStream = new ByteArrayOutputStream();
-        try {
+        try
+        {
             //生产验证码字符串并保存到session中
             String verifyCode = captchaProducer.createText();
             httpServletRequest.getSession().setAttribute("verifyCode", verifyCode);
             BufferedImage challenge = captchaProducer.createImage(verifyCode);
             ImageIO.write(challenge, "jpg", imgOutputStream);
-        } catch (IllegalArgumentException e) {
+        }
+        catch (IllegalArgumentException e)
+        {
             httpServletResponse.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }

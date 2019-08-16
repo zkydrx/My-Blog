@@ -14,28 +14,32 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
- * @author 13
- * @qq交流群 796794009
- * @email 2449207463@qq.com
- * @link http://13blog.site
+ *
+
+ *
+ *
  */
 @Controller
 @RequestMapping("/admin")
-public class LinkController {
+public class LinkController
+{
 
     @Resource
     private LinkService linkService;
 
     @GetMapping("/links")
-    public String linkPage(HttpServletRequest request) {
+    public String linkPage(HttpServletRequest request)
+    {
         request.setAttribute("path", "links");
         return "admin/link";
     }
 
     @GetMapping("/links/list")
     @ResponseBody
-    public Result list(@RequestParam Map<String, Object> params) {
-        if (StringUtils.isEmpty(params.get("page")) || StringUtils.isEmpty(params.get("limit"))) {
+    public Result list(@RequestParam Map<String, Object> params)
+    {
+        if (StringUtils.isEmpty(params.get("page")) || StringUtils.isEmpty(params.get("limit")))
+        {
             return ResultGenerator.genFailResult("参数异常！");
         }
         PageQueryUtil pageUtil = new PageQueryUtil(params);
@@ -51,8 +55,11 @@ public class LinkController {
                        @RequestParam("linkName") String linkName,
                        @RequestParam("linkUrl") String linkUrl,
                        @RequestParam("linkRank") Integer linkRank,
-                       @RequestParam("linkDescription") String linkDescription) {
-        if (linkType == null || linkType < 0 || linkRank == null || linkRank < 0 || StringUtils.isEmpty(linkName) || StringUtils.isEmpty(linkName) || StringUtils.isEmpty(linkUrl) || StringUtils.isEmpty(linkDescription)) {
+                       @RequestParam("linkDescription") String linkDescription)
+    {
+        if (linkType == null || linkType < 0 || linkRank == null || linkRank < 0 || StringUtils.isEmpty(linkName) || StringUtils.isEmpty(linkName) || StringUtils.isEmpty(linkUrl) || StringUtils
+                .isEmpty(linkDescription))
+        {
             return ResultGenerator.genFailResult("参数异常！");
         }
         BlogLink link = new BlogLink();
@@ -69,7 +76,8 @@ public class LinkController {
      */
     @GetMapping("/links/info/{id}")
     @ResponseBody
-    public Result info(@PathVariable("id") Integer id) {
+    public Result info(@PathVariable("id") Integer id)
+    {
         BlogLink link = linkService.selectById(id);
         return ResultGenerator.genSuccessResult(link);
     }
@@ -80,16 +88,20 @@ public class LinkController {
     @RequestMapping(value = "/links/update", method = RequestMethod.POST)
     @ResponseBody
     public Result update(@RequestParam("linkId") Integer linkId,
-                       @RequestParam("linkType") Integer linkType,
-                       @RequestParam("linkName") String linkName,
-                       @RequestParam("linkUrl") String linkUrl,
-                       @RequestParam("linkRank") Integer linkRank,
-                       @RequestParam("linkDescription") String linkDescription) {
+                         @RequestParam("linkType") Integer linkType,
+                         @RequestParam("linkName") String linkName,
+                         @RequestParam("linkUrl") String linkUrl,
+                         @RequestParam("linkRank") Integer linkRank,
+                         @RequestParam("linkDescription") String linkDescription)
+    {
         BlogLink tempLink = linkService.selectById(linkId);
-        if (tempLink == null) {
+        if (tempLink == null)
+        {
             return ResultGenerator.genFailResult("无数据！");
         }
-        if (linkType == null || linkType < 0 || linkRank == null || linkRank < 0 || StringUtils.isEmpty(linkName) || StringUtils.isEmpty(linkName) || StringUtils.isEmpty(linkUrl) || StringUtils.isEmpty(linkDescription)) {
+        if (linkType == null || linkType < 0 || linkRank == null || linkRank < 0 || StringUtils.isEmpty(linkName) || StringUtils.isEmpty(linkName) || StringUtils.isEmpty(linkUrl) || StringUtils
+                .isEmpty(linkDescription))
+        {
             return ResultGenerator.genFailResult("参数异常！");
         }
         tempLink.setLinkType(linkType.byteValue());
@@ -105,13 +117,18 @@ public class LinkController {
      */
     @RequestMapping(value = "/links/delete", method = RequestMethod.POST)
     @ResponseBody
-    public Result delete(@RequestBody Integer[] ids) {
-        if (ids.length < 1) {
+    public Result delete(@RequestBody Integer[] ids)
+    {
+        if (ids.length < 1)
+        {
             return ResultGenerator.genFailResult("参数异常！");
         }
-        if (linkService.deleteBatch(ids)) {
+        if (linkService.deleteBatch(ids))
+        {
             return ResultGenerator.genSuccessResult();
-        } else {
+        }
+        else
+        {
             return ResultGenerator.genFailResult("删除失败");
         }
     }

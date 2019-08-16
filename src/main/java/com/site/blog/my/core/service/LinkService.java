@@ -7,7 +7,8 @@ import com.site.blog.my.core.util.PageResult;
 import java.util.List;
 import java.util.Map;
 
-public interface LinkService {
+public interface LinkService
+{
     /**
      * 查询友链的分页数据
      *

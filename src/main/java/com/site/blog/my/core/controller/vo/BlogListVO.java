@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
 
-public class BlogListVO implements Serializable {
+public class BlogListVO implements Serializable
+{
 
     private Long blogId;
 
@@ -24,67 +25,83 @@ public class BlogListVO implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date createTime;
 
-    public Long getBlogId() {
+    public Long getBlogId()
+    {
         return blogId;
     }
 
-    public void setBlogId(Long blogId) {
+    public void setBlogId(Long blogId)
+    {
         this.blogId = blogId;
     }
 
-    public String getBlogTitle() {
+    public String getBlogTitle()
+    {
         return blogTitle;
     }
 
-    public void setBlogTitle(String blogTitle) {
+    public void setBlogTitle(String blogTitle)
+    {
         this.blogTitle = blogTitle;
     }
 
-    public String getBlogSubUrl() {
+    public String getBlogSubUrl()
+    {
         return blogSubUrl;
     }
 
-    public void setBlogSubUrl(String blogSubUrl) {
+    public void setBlogSubUrl(String blogSubUrl)
+    {
         this.blogSubUrl = blogSubUrl;
     }
 
-    public String getBlogCoverImage() {
+    public String getBlogCoverImage()
+    {
         return blogCoverImage;
     }
 
-    public void setBlogCoverImage(String blogCoverImage) {
+    public void setBlogCoverImage(String blogCoverImage)
+    {
         this.blogCoverImage = blogCoverImage;
     }
 
-    public Integer getBlogCategoryId() {
+    public Integer getBlogCategoryId()
+    {
         return blogCategoryId;
     }
 
-    public void setBlogCategoryId(Integer blogCategoryId) {
+    public void setBlogCategoryId(Integer blogCategoryId)
+    {
         this.blogCategoryId = blogCategoryId;
     }
 
-    public String getBlogCategoryName() {
+    public String getBlogCategoryName()
+    {
         return blogCategoryName;
     }
 
-    public void setBlogCategoryName(String blogCategoryName) {
+    public void setBlogCategoryName(String blogCategoryName)
+    {
         this.blogCategoryName = blogCategoryName;
     }
 
-    public String getBlogCategoryIcon() {
+    public String getBlogCategoryIcon()
+    {
         return blogCategoryIcon;
     }
 
-    public void setBlogCategoryIcon(String blogCategoryIcon) {
+    public void setBlogCategoryIcon(String blogCategoryIcon)
+    {
         this.blogCategoryIcon = blogCategoryIcon;
     }
 
-    public Date getCreateTime() {
+    public Date getCreateTime()
+    {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(Date createTime)
+    {
         this.createTime = createTime;
     }
 }

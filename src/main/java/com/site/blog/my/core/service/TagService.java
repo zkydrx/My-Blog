@@ -6,7 +6,8 @@ import com.site.blog.my.core.util.PageResult;
 
 import java.util.List;
 
-public interface TagService {
+public interface TagService
+{
 
     /**
      * 查询标签的分页数据

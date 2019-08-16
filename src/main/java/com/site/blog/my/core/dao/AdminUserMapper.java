@@ -3,7 +3,8 @@ package com.site.blog.my.core.dao;
 import com.site.blog.my.core.entity.AdminUser;
 import org.apache.ibatis.annotations.Param;
 
-public interface AdminUserMapper {
+public interface AdminUserMapper
+{
     int insert(AdminUser record);
 
     int insertSelective(AdminUser record);

@@ -3,9 +3,11 @@ package com.site.blog.my.core.dao;
 import com.site.blog.my.core.entity.BlogTag;
 import com.site.blog.my.core.entity.BlogTagCount;
 import com.site.blog.my.core.util.PageQueryUtil;
+
 import java.util.List;
 
-public interface BlogTagMapper {
+public interface BlogTagMapper
+{
     int deleteByPrimaryKey(Integer tagId);
 
     int insert(BlogTag record);

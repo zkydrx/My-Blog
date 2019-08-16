@@ -5,7 +5,8 @@ import com.site.blog.my.core.util.PageQueryUtil;
 
 import java.util.List;
 
-public interface BlogLinkMapper {
+public interface BlogLinkMapper
+{
     int deleteByPrimaryKey(Integer linkId);
 
     int insert(BlogLink record);
